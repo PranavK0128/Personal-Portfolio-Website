@@ -1,6 +1,6 @@
 # Development
 
-The application currently renders a blank, pure-black (`#000000`) home page. Navigation, portfolio sections, and resume content will be added after layout review.
+The application currently renders a blank, pure-black (`#000000`) home page. The approved navigation is Home, Projects, and About, with Resume and Contact actions. Experience will be a section within About, with a short preview on Home. Component design and implementation are the next phase.
 
 The foundation uses Next.js 16.4.3, React 19.3.1, Tailwind CSS 4.3.3, TypeScript 6.0.3, and Biome 2.6.3. TypeScript is pinned to the stable 6.x line for tooling compatibility. Dependency versions are reproducible through `package-lock.json`.
 
@@ -19,9 +19,9 @@ Commands:
 
 Biome handles linting and formatting independently of the TypeScript version. Type checking remains a separate command.
 
-## Local Git exclusions
+## Git exclusions
 
-This repository keeps ignore rules local instead of tracking a `.gitignore`. On a fresh clone, configure `.git/info/exclude` before staging files. At minimum, exclude `node_modules/`, `.next/`, `out/`, `dist/`, `build/`, `coverage/`, `*.tsbuildinfo`, `next-env.d.ts`, `.env*`, `.vercel/`, logs, and any local workspace files. Local exclusion rules are not distributed by Git.
+The tracked `.gitignore` shares dependency, build-output, environment-file, and local-workspace exclusions with every clone. Use `.git/info/exclude` only for additional checkout-specific exclusions that should remain local.
 
 ## Folder responsibilities
 
@@ -38,7 +38,7 @@ docs/
   DEVELOPMENT.md       Setup and development conventions
 ```
 
-Empty directories are reserved with `.gitkeep` files. Add actual modules only when needed. Route files should compose components; keep content and reusable behaviors out of large page files. Use `@/` for imports from `src`.
+Empty directories are reserved with `.gitkeep` files because Git tracks files rather than empty directories. Remove each placeholder when its directory contains an actual tracked file. Add actual modules only when needed. Route files should compose components; keep content and reusable behaviors out of large page files. Use `@/` for imports from `src`.
 
 Use lowercase kebab-case for ordinary filenames and route segments, PascalCase for React component exports, and the required Next.js filenames such as `page.tsx` and `layout.tsx`.
 
