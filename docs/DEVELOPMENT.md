@@ -17,6 +17,12 @@ Commands:
 - `npm run build`: create the production build.
 - `npm start`: serve the production build.
 
+Biome handles linting and formatting independently of the TypeScript version. Type checking remains a separate command.
+
+## Local Git exclusions
+
+This repository keeps ignore rules local instead of tracking a `.gitignore`. On a fresh clone, configure `.git/info/exclude` before staging files. At minimum, exclude `node_modules/`, `.next/`, `out/`, `dist/`, `build/`, `coverage/`, `*.tsbuildinfo`, `next-env.d.ts`, `.env*`, `.vercel/`, logs, and any local workspace files. Local exclusion rules are not distributed by Git.
+
 ## Folder responsibilities
 
 ```text
