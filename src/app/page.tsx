@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <main className="min-h-dvh" aria-label="Pranav Kondapalli portfolio" />
+    <main id="main-content" tabIndex={-1} className="page-shell">
+      <h1 className="sr-only">Pranav Kondapalli portfolio</h1>
+    </main>
   );
 }

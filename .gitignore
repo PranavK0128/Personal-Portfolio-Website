@@ -2,6 +2,15 @@
 /Portfolio Inspiration/
 /README.md
 /AGENTS.md
+/docs/
+/tests/
+
+# Local test runs and browser reports
+/test-results/
+/playwright-report/
+/blob-report/
+/.playwright/
+/screenshots/
 
 # Dependencies and generated output
 node_modules/
@@ -10,6 +19,7 @@ dist/
 out/
 build/
 coverage/
+.local-data/
 *.tsbuildinfo
 next-env.d.ts
 
