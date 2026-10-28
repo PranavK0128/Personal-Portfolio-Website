@@ -20,7 +20,22 @@ export default function PrivacyPage() {
           <p>
             Hey, thanks for stopping by. This is my personal portfolio where I
             share my work and projects. You can browse without creating an
-            account. I don&apos;t run ads and there are no tracking cookies.
+            account. I don&apos;t run ads.
+          </p>
+        </section>
+        <section>
+          <h2>Data stored and why</h2>
+          <p>
+            The Visitors board saves and publicly displays the name you submit,
+            your note, drawing, posting time, and card position. A browser
+            cookie lasting up to one year and hashed browser and IP identifiers
+            help prevent spam. Temporary cursor and selection data are shared
+            with other viewers for live interaction.
+          </p>
+          <p>
+            Your theme preference is saved in your browser. Contact form
+            submissions (name, email, subject, and message) are processed by
+            Formspree and delivered to me so I can respond.
           </p>
         </section>
         <section>

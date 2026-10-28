@@ -1,0 +1,31 @@
+.projects-page-content {
+  width: 100%;
+  max-width: 1536px;
+  margin-inline: auto;
+  padding: 48px 48px 112px;
+}
+
+.projects-page h1 {
+  margin: 0 0 64px;
+  text-align: center;
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.projects-page .home-project-grid {
+  row-gap: 40px;
+}
+
+@media (width < 768px) {
+  .projects-page-content {
+    padding: 32px 24px 80px;
+  }
+  .projects-page h1 {
+    margin-bottom: 40px;
+  }
+  .projects-page .home-project-grid {
+    row-gap: 28px;
+  }
+}

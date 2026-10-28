@@ -15,6 +15,7 @@
   --board-card: #242424;
   --board-field: #292929;
   position: relative;
+  isolation: isolate;
   border: 1px solid var(--nav-border);
   border-radius: 9px;
   background: var(--background);
