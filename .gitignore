@@ -5,6 +5,17 @@
 /docs/
 /tests/
 
+# Local deployment, backups, and runtime data
+/deploy/
+/backups/
+/Portfolio Backups/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+
 # Local test runs and browser reports
 /test-results/
 /playwright-report/

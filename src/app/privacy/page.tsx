@@ -39,6 +39,16 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
+          <h2>Site analytics and security</h2>
+          <p>
+            Cloudflare provides cookie-free page-view and performance analytics,
+            including referral sources, device types, and country-level traffic.
+            Its network analytics estimate unique visitors using IP addresses.
+            Cloudflare and the hosting server also process request information
+            to deliver the site, diagnose errors, and prevent abuse.
+          </p>
+        </section>
+        <section>
           <h2>When you contact me</h2>
           <p>
             You can email me at{" "}
