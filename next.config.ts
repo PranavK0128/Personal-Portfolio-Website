@@ -57,6 +57,8 @@ const nextConfig: NextConfig = {
       {
         source: "/demos/stackhud/replay.html",
         headers: [
+          // Keep Cloudflare's automatic analytics out of the isolated demo.
+          { key: "Cache-Control", value: "public, max-age=0, no-transform" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           {
             key: "Content-Security-Policy",

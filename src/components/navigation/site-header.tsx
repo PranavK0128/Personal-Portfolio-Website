@@ -4,13 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { navigation, profile } from "@/data/navigation";
+import { projects } from "@/data/projects";
 import { NavIcon } from "./nav-icon";
 import { ThemeToggle } from "./theme-toggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const activeIndex = navigation.findIndex(({ href }) =>
-    href === "/" ? pathname === href : pathname.startsWith(href),
+  // Unknown URLs use the shared static 404. Keep its initial navigation state
+  // consistent with the server instead of highlighting a nonexistent subpage.
+  const isProjectPage = projects.some(
+    ({ id }) => pathname === `/projects/${id}`,
+  );
+  const activeIndex = navigation.findIndex(
+    ({ href }) => pathname === href || (href === "/projects" && isProjectPage),
   );
 
   return (
