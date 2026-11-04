@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export function CaseContents({
   sections,
@@ -8,7 +9,47 @@ export function CaseContents({
   sections: { id: string; label: string }[];
 }) {
   const [active, setActive] = useState("overview");
-  const menu = useRef<HTMLDetailsElement>(null);
+  const [open, setOpen] = useState(false);
+  const [menuSlot, setMenuSlot] = useState<HTMLElement | null>(null);
+  const menu = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const panelId = useId();
+
+  useEffect(() => {
+    setMenuSlot(document.getElementById("project-contents-slot"));
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: PointerEvent | FocusEvent) => {
+      if (
+        event.target instanceof Node &&
+        !menu.current?.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus({ preventScroll: true });
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const resize = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    document.addEventListener("pointerdown", outside);
+    document.addEventListener("focusin", outside);
+    document.addEventListener("keydown", onKeyDown);
+    desktop.addEventListener("change", resize);
+    return () => {
+      document.removeEventListener("pointerdown", outside);
+      document.removeEventListener("focusin", outside);
+      document.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", resize);
+    };
+  }, [open]);
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -31,13 +72,17 @@ export function CaseContents({
       window.removeEventListener("resize", update);
     };
   }, [sections]);
-  const links = sections.map(({ id, label }) => (
+  const links = sections.map(({ id, label }, index) => (
     <a
       key={id}
       href={`#${id}`}
+      style={{ "--section-index": index } as CSSProperties}
       aria-current={active === id ? "location" : undefined}
       onClick={() => {
-        if (menu.current) menu.current.open = false;
+        if (open) {
+          setOpen(false);
+          toggle.current?.focus({ preventScroll: true });
+        }
       }}
     >
       {label}
@@ -49,12 +94,38 @@ export function CaseContents({
         <span>Contents</span>
         {links}
       </nav>
-      <details className="case-mobile-contents" ref={menu}>
-        <summary>
-          Contents <span>{sections.find((s) => s.id === active)?.label}</span>
-        </summary>
-        <nav aria-label="Project sections">{links}</nav>
-      </details>
+      {menuSlot &&
+        createPortal(
+          <div className="case-contents-menu" ref={menu} data-open={open}>
+            <button
+              type="button"
+              className="case-contents-toggle"
+              aria-label="Project contents"
+              aria-expanded={open}
+              aria-controls={panelId}
+              title="Project contents"
+              ref={toggle}
+              onClick={() => setOpen((current) => !current)}
+            >
+              <span className="case-contents-icon" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+            <nav
+              id={panelId}
+              className="case-contents-panel"
+              aria-label="Project sections"
+              aria-hidden={!open}
+              inert={!open}
+            >
+              <span className="case-contents-label">Contents</span>
+              {links}
+            </nav>
+          </div>,
+          menuSlot,
+        )}
     </>
   );
 }

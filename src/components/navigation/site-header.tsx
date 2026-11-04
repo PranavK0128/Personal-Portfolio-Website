@@ -56,7 +56,10 @@ export function SiteHeader() {
           </Link>
         ))}
       </nav>
-      <ThemeToggle />
+      <div className="header-actions">
+        <div id="project-contents-slot" />
+        <ThemeToggle />
+      </div>
     </header>
   );
 }
