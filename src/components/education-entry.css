@@ -1,0 +1,65 @@
+.education-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.education-logo {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  height: 48px;
+  border: 1px solid var(--nav-border);
+  border-radius: 10px;
+  background: var(--nav-surface);
+}
+.education-logo img {
+  object-fit: contain;
+}
+.education-copy {
+  min-width: 0;
+  flex: 1;
+}
+.education-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+}
+.education-heading :is(h3, h4) {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.education-date {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.education-copy .education-degree {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.education-copy .education-detail {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (max-width: 480px) {
+  .education-entry {
+    gap: 12px;
+  }
+  .education-logo {
+    flex-basis: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .education-logo img {
+    width: 28px;
+    height: 28px;
+  }
+}

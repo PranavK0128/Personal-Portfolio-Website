@@ -130,7 +130,10 @@ export function VisitorsBoard() {
 
   function close() {
     setEditor(false);
-    addButton.current?.focus();
+    // Wait until the modal is removed so the board is no longer inert.
+    requestAnimationFrame(() => {
+      (addButton.current ?? panel.current)?.focus({ preventScroll: true });
+    });
   }
   function posted(note: VisitorNote) {
     setBoard((prev) => ({
@@ -344,6 +347,7 @@ export function VisitorsBoard() {
       <div
         ref={panel}
         className="board-surface"
+        tabIndex={-1}
         onPointerMove={(event) => {
           if (editor || Date.now() - lastCursor.current < 80) return;
           lastCursor.current = Date.now();

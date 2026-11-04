@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/navigation/site-header";
+import { PageScrollbar } from "@/components/page-scrollbar";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
@@ -28,13 +29,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      {/* Grammarly adds attributes to body before hydration. Suppress only this
+          element's attribute warning; child hydration checks remain enabled. */}
+      <body suppressHydrationWarning>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
         <SiteHeader />
         {children}
         <SiteFooter />
+        <PageScrollbar />
       </body>
     </html>
   );

@@ -888,3 +888,39 @@ textarea {
     transition: none;
   }
 }
+
+/* Recovery page keeps the shared navigation and skip-link target usable. */
+.not-found-page {
+  width: 100%;
+  max-width: 1216px;
+  min-height: 60svh;
+  margin-inline: auto;
+  padding: 64px clamp(24px, 4vw, 48px) 80px;
+}
+
+.not-found-page h1 {
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.not-found-description {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 32px;
+}
+
+.not-found-actions a {
+  padding-block: 8px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}

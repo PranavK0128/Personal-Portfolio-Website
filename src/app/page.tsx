@@ -3,7 +3,7 @@ import { ContactIcon } from "@/components/contact/contact-icon";
 import { ExperienceEducation } from "@/components/home/experience-education";
 import { SelectedProjects } from "@/components/home/selected-projects";
 import { Tools } from "@/components/home/tools";
-import { contact, socialLinks } from "@/data/contact";
+import { contact, resumeLink, socialLinks } from "@/data/contact";
 import "./home.css";
 
 function DownArrow({ size = 24 }: { size?: number }) {
@@ -41,13 +41,13 @@ export default function Home() {
             </div>
             <div className="home-content">
               <h1 id="hero-heading" className="home-heading">
-                <span>Hi, I’m Pranav</span>
+                <span>Hi, I&rsquo;m Pranav</span>
                 <span>Software Engineer</span>
               </h1>
               <p className="home-description">
-                I am a 22yo software engineer based in Atlanta. I’m interested
-                in machine learning, building useful tools, and turning random
-                ideas into fun projects.
+                CS student at Georgia Tech studying artificial intelligence. In
+                my free time I love building useful tools, turning random ideas
+                into fun projects, and reading.
               </p>
               <div className="home-actions">
                 <Link href="/projects" className="home-primary">
@@ -76,11 +76,20 @@ export default function Home() {
                   <ContactIcon name="email" size={22} />
                   Contact
                 </Link>
+                <a
+                  href={resumeLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ContactIcon name="resume" size={22} />
+                  Resume
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
               </div>
               <a
                 className="home-scroll-cue"
-                href="#featured-projects"
-                aria-label="Scroll to featured projects"
+                href="#experience-education"
+                aria-label="Scroll to experience and education"
               >
                 <DownArrow size={36} />
               </a>
@@ -88,6 +97,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <ExperienceEducation />
       <section
         id="featured-projects"
         tabIndex={-1}
@@ -104,14 +114,13 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <ExperienceEducation />
       <Tools />
       <section className="home-contact" aria-labelledby="home-contact-heading">
         <div className="home-contact-panel">
           <h2 id="home-contact-heading">Have something in mind?</h2>
           <p>
-            Have an opportunity, a project idea, or just want to say hi? I’d
-            love to hear from you.
+            Have an opportunity, a project idea, or just want to say hi?
+            I&rsquo;d love to hear from you.
           </p>
           <div className="home-contact-actions">
             <Link href="/contact" className="home-projects-button">

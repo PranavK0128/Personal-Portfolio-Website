@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { featuredProjects, type Project } from "@/data/projects";
 import { ResearchPreview } from "./research-preview";
 import { OptionsPreview, PokerPreview } from "./workflow-preview";
@@ -76,7 +77,11 @@ export function ProjectGrid({
           key={project.id}
           aria-labelledby={`${project.id}-title`}
         >
-          <div className={`project-card project-card-${project.id}`}>
+          <Link
+            href={`/projects/${project.id}`}
+            className={`project-card project-card-${project.id}`}
+            aria-labelledby={`${project.id}-title`}
+          >
             <div className="project-visual">
               <div className="project-browser">
                 <BrowserChrome />
@@ -113,7 +118,7 @@ export function ProjectGrid({
                 ))}
               </ul>
             </div>
-          </div>
+          </Link>
         </article>
       ))}
     </div>

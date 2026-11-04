@@ -1,0 +1,75 @@
+/* Only replace the document scrollbar once its interactive counterpart is ready. */
+html[data-page-scrollbar] {
+  scrollbar-width: none;
+}
+
+html[data-page-scrollbar]::-webkit-scrollbar {
+  display: none;
+}
+
+/* Perry reference: 11px edge, 7px thumb, 2px inset, 1.45x hover, 300ms fade. */
+.page-scrollbar {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 30;
+  width: 11px;
+  opacity: 0;
+  transform-origin: center right;
+  transition:
+    transform 300ms,
+    opacity 300ms;
+  touch-action: none;
+  user-select: none;
+}
+
+.page-scrollbar[hidden] {
+  display: none;
+}
+
+.page-scrollbar:hover,
+.page-scrollbar[data-scrolling],
+.page-scrollbar[data-dragging],
+.page-scrollbar:focus-visible {
+  opacity: 1;
+}
+
+.page-scrollbar:hover,
+.page-scrollbar[data-dragging] {
+  transform: scaleX(1.45);
+}
+
+.page-scrollbar-thumb {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 7px;
+  border-radius: 10px;
+  background: rgb(242 242 242 / 20%);
+  opacity: 0.5;
+  cursor: grab;
+}
+
+:root[data-theme="light"] .page-scrollbar-thumb {
+  background: rgb(23 23 23 / 70%);
+}
+
+.page-scrollbar[data-dragging],
+.page-scrollbar[data-dragging] .page-scrollbar-thumb {
+  cursor: grabbing;
+}
+
+.page-scrollbar:focus-visible {
+  outline: none;
+}
+
+.page-scrollbar:focus-visible .page-scrollbar-thumb {
+  outline: 1px solid var(--foreground);
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-scrollbar {
+    transition: none;
+  }
+}

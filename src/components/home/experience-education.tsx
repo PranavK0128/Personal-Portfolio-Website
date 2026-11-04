@@ -1,59 +1,47 @@
 import Link from "next/link";
 import { ContactIcon } from "@/components/contact/contact-icon";
+import { EducationEntry } from "@/components/education-entry";
+import { education, experiences } from "@/data/about";
 
 export function ExperienceEducation() {
   return (
     <section
+      id="experience-education"
+      tabIndex={-1}
       className="home-background-section"
       aria-labelledby="background-heading"
     >
       <h2 id="background-heading">Experience &amp; Education</h2>
       <div className="home-background-grid">
         <Link
-          href="/about"
+          href="/about#experience"
           className="home-background-panel"
           aria-labelledby="experience-heading"
         >
           <h3 id="experience-heading">Experience</h3>
           <ol className="home-timeline">
-            {[
-              [
-                "Most recent role",
-                "A short summary of your responsibilities, what you built, and the impact of your work will go here.",
-              ],
-              [
-                "Previous role",
-                "Highlights from an earlier internship, job, or research role will go here.",
-              ],
-            ].map(([title, description]) => (
-              <li className="home-timeline-entry" key={title}>
-                <span className="home-draft-label">Placeholder</span>
-                <h4>{title}</h4>
-                <p className="home-entry-meta">Organization · Dates to add</p>
-                <p>{description}</p>
+            {experiences.slice(0, 3).map((entry) => (
+              <li className="home-timeline-entry" key={entry.id}>
+                <h4>{entry.role}</h4>
+                <p className="home-entry-organization">{entry.organization}</p>
+                <p className="home-entry-meta">{entry.dates}</p>
+                <p>{entry.summary}</p>
               </li>
             ))}
           </ol>
         </Link>
         <Link
-          href="/about"
+          href="/about#education"
           className="home-background-panel"
           aria-labelledby="education-heading"
         >
           <h3 id="education-heading">Education</h3>
-          <ol className="home-timeline">
-            <li className="home-timeline-entry">
-              <span className="home-entry-status">Pursuing</span>
-              <h4>Graduate studies in Machine Learning</h4>
-              <p className="home-entry-meta">Georgia Institute of Technology</p>
-              <p>Master’s studies focused on machine learning.</p>
-            </li>
-            <li className="home-timeline-entry">
-              <span className="home-entry-status">Graduated</span>
-              <h4>BS in Computer Science</h4>
-              <p className="home-entry-meta">Georgia Institute of Technology</p>
-              <p>Concentrations in AI and People/Design.</p>
-            </li>
+          <ol className="home-education-list">
+            {education.map((entry) => (
+              <li key={entry.degree}>
+                <EducationEntry entry={entry} headingLevel="h4" />
+              </li>
+            ))}
           </ol>
         </Link>
       </div>

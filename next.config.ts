@@ -32,7 +32,40 @@ const nextConfig: NextConfig = {
         ].join("; "),
       });
     }
-    return [{ source: "/:path*", headers: securityHeaders }];
+    const policy = securityHeaders.find(
+      (header) => header.key === "Content-Security-Policy",
+    );
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      // Only the StackHUD case study embeds our local, self-contained replay.
+      ...(policy
+        ? [
+            {
+              source: "/projects/stackhud",
+              headers: [
+                {
+                  ...policy,
+                  value: policy.value.replace(
+                    "frame-src https://challenges.cloudflare.com",
+                    "frame-src 'self' https://challenges.cloudflare.com",
+                  ),
+                },
+              ],
+            },
+          ]
+        : []),
+      {
+        source: "/demos/stackhud/replay.html",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'",
+          },
+        ],
+      },
+    ];
   },
   turbopack: {
     rules: {

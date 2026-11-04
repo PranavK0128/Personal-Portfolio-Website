@@ -4,7 +4,7 @@ export function PokerPreview() {
   return (
     <div className="workflow-preview poker-preview">
       <p className="workflow-eyebrow">STRATEGY / OPPONENT MODELING</p>
-      <p className="workflow-title">PokerNow Deep Learning Assistant</p>
+      <p className="workflow-title">Machine Learning Poker Assistant</p>
       <p className="workflow-subtitle">
         From table state to a more informed decision
       </p>

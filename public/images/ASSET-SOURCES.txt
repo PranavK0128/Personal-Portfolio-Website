@@ -1,0 +1,40 @@
+Georgia Tech monogram: https://www.gatech.edu/themes/custom/gatech/favicon.ico
+Original 48px image converted to PNG without visual modification; identifies education at Georgia Institute of Technology.
+Node.js icon: https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg
+Devicon license: technologies/DEVICON-LICENSE.txt
+
+Skills and Tools icons (local copies):
+java.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg
+javascript.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg
+html5.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg
+css3.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg
+fastify.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/fastify/fastify-original.svg
+tailwindcss.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg
+d3js.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/d3js/d3js-original.svg
+tensorflow.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg
+huggingface.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/huggingface/huggingface-original.svg
+numpy.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg
+mongodb.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg
+oracle.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg
+prisma.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/prisma/prisma-original.svg
+firebase.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg
+dynamodb.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/dynamodb/dynamodb-original.svg
+amazonwebservices.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg
+digitalocean.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/digitalocean/digitalocean-original.svg
+git.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg
+github.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg
+playwright.svg: https://raw.githubusercontent.com/devicons/devicon/master/icons/playwright/playwright-original.svg
+nextauth.png: https://next-auth.js.org/img/logo/logo-sm.png
+lightgbm.svg: https://raw.githubusercontent.com/lightgbm-org/LightGBM/main/docs/logo/LightGBM_logo_no_text.svg
+xgboost.png: https://xgboost.ai/images/logo/xgboost-logo-trimmed.png
+highcharts.svg: https://raw.githubusercontent.com/gilbarbara/logos/main/logos/highcharts.svg
+aws-lambda.svg: https://raw.githubusercontent.com/gilbarbara/logos/main/logos/aws-lambda.svg
+aws-amplify.svg: https://raw.githubusercontent.com/gilbarbara/logos/main/logos/aws-amplify.svg
+aws-s3.svg: https://raw.githubusercontent.com/gilbarbara/logos/main/logos/aws-s3.svg
+sql.svg: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/database.svg
+rest-api.svg: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/network.svg
+cicd.svg: https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/workflow.svg
+LUCIDE-LICENSE.txt: https://raw.githubusercontent.com/lucide-icons/lucide/main/LICENSE
+SVG-LOGOS-LICENSE.txt: https://raw.githubusercontent.com/gilbarbara/logos/main/LICENSE.txt
+DistilBERT uses the Hugging Face logo. SQL, REST APIs, and CI/CD use Lucide concept icons. Brand marks identify tools; ownership remains with their respective projects.
+catboost.png: https://avatars.mds.yandex.net/get-bunker/49769/c4b06f2b169c7596da4143d5f951d925b17c413e/orig (official catboost.ai favicon)
