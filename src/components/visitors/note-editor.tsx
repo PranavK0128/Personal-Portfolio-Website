@@ -9,6 +9,7 @@ import {
   validateNote,
 } from "@/lib/visitors";
 import { BoardIcon } from "./board-icon";
+import { ColorPicker } from "./color-picker";
 import { Drawing } from "./drawing";
 
 export function NoteEditor({
@@ -22,10 +23,13 @@ export function NoteEditor({
   const canvas = useRef<SVGSVGElement>(null);
   const active = useRef<Stroke | null>(null);
   const busy = useRef(false);
+  const customColorButton = useRef<HTMLButtonElement>(null);
   const [drawing, setDrawing] = useState<Stroke[]>([]);
   const [current, setCurrent] = useState<Stroke | null>(null);
   const [redo, setRedo] = useState<Stroke[]>([]);
   const [color, setColor] = useState<string>(DRAWING_COLORS[0]);
+  const [customColor, setCustomColor] = useState("#14B8A6");
+  const [colorOpen, setColorOpen] = useState(false);
   const [size, setSize] = useState(8);
   const [sizeOpen, setSizeOpen] = useState(false);
   const [name, setName] = useState("");
@@ -119,6 +123,11 @@ export function NoteEditor({
     setRedo(redo.slice(0, -1));
   }
 
+  function closeColorPicker() {
+    setColorOpen(false);
+    customColorButton.current?.focus({ preventScroll: true });
+  }
+
   async function submit() {
     if (busy.current) return;
     setError("");
@@ -157,7 +166,10 @@ export function NoteEditor({
       aria-labelledby="note-editor-title"
       onCancel={(event) => {
         if (pending) event.preventDefault();
-        else onClose();
+        else if (colorOpen) {
+          event.preventDefault();
+          closeColorPicker();
+        } else onClose();
       }}
     >
       <h2 id="note-editor-title" className="sr-only">
@@ -178,11 +190,38 @@ export function NoteEditor({
                 key={value}
                 aria-label={`${["Black", "White", "Red", "Blue", "Green", "Yellow", "Orange", "Purple"][index]} pen`}
                 aria-pressed={color === value}
-                onClick={() => setColor(value)}
+                onClick={() => {
+                  setColor(value);
+                  setColorOpen(false);
+                }}
               >
                 <span style={{ background: value }} />
               </button>
             ))}
+            <button
+              ref={customColorButton}
+              type="button"
+              className="drawing-tool custom-color-tool"
+              aria-label="Custom color"
+              title="Choose a custom color"
+              aria-pressed={
+                color === customColor &&
+                !DRAWING_COLORS.some((preset) => preset === color)
+              }
+              aria-expanded={colorOpen}
+              aria-controls="drawing-custom-color"
+              onClick={() => {
+                if (!colorOpen) {
+                  setColor(customColor);
+                  setSizeOpen(false);
+                }
+                setColorOpen(!colorOpen);
+              }}
+            >
+              <span className="custom-color-swatch" aria-hidden="true">
+                <span style={{ background: customColor }} />
+              </span>
+            </button>
           </div>
           <div className="drawing-actions">
             <button
@@ -211,7 +250,10 @@ export function NoteEditor({
               aria-label="Eraser"
               title="Eraser"
               aria-pressed={color === "eraser"}
-              onClick={() => setColor("eraser")}
+              onClick={() => {
+                setColor("eraser");
+                setColorOpen(false);
+              }}
             >
               <BoardIcon name="eraser" />
             </button>
@@ -234,12 +276,28 @@ export function NoteEditor({
               aria-label="Brush size"
               title="Brush size"
               aria-expanded={sizeOpen}
-              onClick={() => setSizeOpen(!sizeOpen)}
+              onClick={() => {
+                setSizeOpen(!sizeOpen);
+                setColorOpen(false);
+              }}
             >
               <BoardIcon name="size" />
             </button>
           </div>
         </div>
+        {colorOpen && (
+          <div id="drawing-custom-color">
+            <ColorPicker
+              color={customColor}
+              disabled={pending}
+              onChange={(selected) => {
+                setCustomColor(selected);
+                setColor(selected);
+              }}
+              onClose={closeColorPicker}
+            />
+          </div>
+        )}
         {sizeOpen && (
           <label className="brush-size">
             Brush size{" "}

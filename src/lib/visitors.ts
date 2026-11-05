@@ -94,7 +94,7 @@ export function validateNote(value: unknown): {
     const { color, size, points } = stroke as Record<string, unknown>;
     if (
       typeof color !== "string" ||
-      !(color === "eraser" || DRAWING_COLORS.some((c) => c === color))
+      !(color === "eraser" || /^#[\da-f]{6}$/i.test(color))
     )
       throw new Error("Invalid drawing color.");
     if (
@@ -126,7 +126,11 @@ export function validateNote(value: unknown): {
       return [point[0], point[1]];
     });
     if (color !== "eraser") hasInk = true;
-    return { color, size, points: validPoints };
+    return {
+      color: color === "eraser" ? color : color.toUpperCase(),
+      size,
+      points: validPoints,
+    };
   });
   if (!hasInk) throw new Error("Add a drawing before posting.");
   return { name: name.trim(), message: message.trim(), drawing: strokes };

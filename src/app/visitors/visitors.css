@@ -334,6 +334,154 @@
   border-radius: 50%;
   border: 1px solid #8885;
 }
+.custom-color-swatch {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: conic-gradient(#f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+}
+.custom-color-swatch > span {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--board-card);
+  border-radius: 50%;
+}
+.custom-color-panel {
+  display: grid;
+  grid-template-columns: minmax(100px, 150px) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--nav-border);
+  border-radius: 8px;
+  background: var(--board-field);
+}
+.color-wheel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle closest-side, #fff, transparent),
+    conic-gradient(from 90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  touch-action: none;
+  cursor: crosshair;
+}
+.color-wheel:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 5px;
+}
+.color-wheel[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.color-wheel-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #000;
+  pointer-events: none;
+}
+.color-wheel-marker {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px #0008,
+    0 1px 4px #0006;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.custom-color-controls {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.custom-hex-label,
+.custom-brightness {
+  display: grid;
+  gap: 6px;
+}
+.custom-hex-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.custom-color-preview {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid #8888;
+  border-radius: 6px;
+}
+.custom-hex-field input {
+  min-width: 0;
+  width: 100%;
+  height: 36px;
+  padding: 6px 8px;
+  border: 1px solid var(--nav-border-hover);
+  border-radius: 6px;
+  background: var(--board-card);
+  color: var(--foreground);
+  font: inherit;
+  font-size: 14px;
+}
+.custom-hex-field input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+.custom-color-error {
+  margin: 0;
+  color: var(--error);
+}
+.custom-brightness > span {
+  display: flex;
+  justify-content: space-between;
+}
+.custom-brightness output {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.custom-brightness input {
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 8px;
+  margin-block: 8px;
+  border: 1px solid #8885;
+  border-radius: 4px;
+  background: linear-gradient(to right, #000, var(--bright-color));
+  cursor: pointer;
+}
+.custom-brightness input::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--board-card);
+  border-radius: 50%;
+  background: var(--foreground);
+  box-shadow: 0 0 0 1px #8888;
+}
+.custom-brightness input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--board-card);
+  border-radius: 50%;
+  background: var(--foreground);
+  box-shadow: 0 0 0 1px #8888;
+}
+.custom-color-done {
+  justify-self: end;
+  min-height: 32px;
+  padding: 4px 12px;
+}
 .brush-size {
   display: flex;
   align-items: center;
@@ -446,6 +594,17 @@
   .drawing-colors {
     flex: 1 0 100%;
   }
+  .custom-color-panel {
+    grid-template-columns: minmax(100px, 140px) minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px;
+  }
+  .custom-hex-field {
+    gap: 6px;
+  }
+  .custom-hex-field input {
+    font-size: 16px;
+  }
   .drawing-actions {
     border: 0;
     padding: 0;
@@ -456,6 +615,11 @@
   .drawing-tool {
     min-width: 36px;
     height: 36px;
+  }
+  .drawing-colors .drawing-tool {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
   }
   .note-fields > input {
     font-size: 16px;
