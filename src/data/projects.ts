@@ -70,7 +70,7 @@ export const projects: readonly Project[] = [
   },
   {
     id: "stock-options",
-    name: "Stock Options Training Models",
+    name: "QQQ Options Research",
     description:
       "A QQQ options research pipeline for training models, evaluating forecasts chronologically, and comparing strategies with transaction costs and account constraints.",
     technologies: [
