@@ -2,7 +2,7 @@ import type { CaseStudy } from "../case-study-types";
 
 export const pokerCase: CaseStudy = {
   id: "pokernow-assistant",
-  title: "Machine Learning Poker Assistant",
+  title: "Machine Learning for Poker Opponent Modeling",
   subtitle:
     "Combining solver policies, player history, and empirical opponent models.",
   accent: "#bda4ed",

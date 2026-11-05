@@ -48,7 +48,7 @@ export const projects: readonly Project[] = [
   },
   {
     id: "pokernow-assistant",
-    name: "Machine Learning Poker Assistant",
+    name: "Machine Learning for Poker Opponent Modeling",
     description:
       "A poker decision-support tool combining CFR+/DCFR strategies, legal-action checks, and opponent-model diagnostics to help players evaluate their next move.",
     technologies: [
